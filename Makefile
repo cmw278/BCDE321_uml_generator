@@ -5,4 +5,4 @@ init:
 
 # commands to run tests go here
 test:
-	pipenv run pycodestyle
+	pipenv run pycodestyle ./src
