@@ -6,4 +6,4 @@ python:
 
 script:
   - make
-#  - make test
+  - make test
