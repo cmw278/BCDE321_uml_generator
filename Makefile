@@ -4,4 +4,5 @@ init:
 	pipenv install --dev
 
 # commands to run tests go here
-# test:
+test:
+	pipenv run pycodestyle
