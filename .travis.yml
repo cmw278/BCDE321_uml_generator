@@ -1,9 +1,21 @@
+# .travis.yml
+# https://config.travis-ci.com/
+# ---
+# This -ci config file appears to serve the purpose
+# for CI testing of a python development project.
+
+# for more information refer to
+# https://docs.travis-ci.com/user/languages/python/
 language: python
 python:
+  # python version(s) go here
+  - "3.7"
   - "3.8"
 
-# install: "make"
+install:
+  - pip install tox-travis
 
-script:
-  - make
-  - make test
+script: tox
+
+notifications:
+  email: false

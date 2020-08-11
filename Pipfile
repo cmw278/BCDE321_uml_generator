@@ -7,8 +7,7 @@ verify_ssl = true
 pylint = "*"
 autopep8 = "*"
 pycodestyle = "*"
+pytest = "*"
+tox = "*"
 
 [packages]
-
-[requires]
-python_version = "3.8"
