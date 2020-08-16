@@ -1,0 +1,35 @@
+{
+  "attribute": {
+    "name": "my_number",
+    "type": "number"
+  },
+  "method": {
+    "name": "get_number",
+    "return_type": "number"
+  },
+  "argument": {
+    "name": "number_string",
+    "type": "string"
+  },
+  "relationship": {
+    "association": {
+      "type": "association",
+      "target_class": "NumberSetter"
+    },
+    "inheritance": {
+      "type": "inheritance",
+      "target_class": "NumberSetter"
+    },
+    "aggregation": {
+      "type": "aggregation",
+      "target_class": "NumberSetter",
+      "label": "allMyNumberSetters"
+    },
+    "composition": {
+      "type": "composition",
+      "target_class": "NumberSetter",
+      "label": "allMyNumberSetters"
+    }
+  },
+  "class_name": "NumberGetter"
+}
