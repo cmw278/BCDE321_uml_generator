@@ -33,7 +33,7 @@ class TestDotAssociation(TestCase):
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = ('\n' + _RELATIONSHIP['target_class'] + ' -> '
-                    + _CLASS_NAME)
+        expected = ('\n%s -> %s [\nlabel=""\n]'
+                    % (_RELATIONSHIP['target_class'], _CLASS_NAME))
         actual = str(self.relationship)
         self.assertEqual(actual, expected)
