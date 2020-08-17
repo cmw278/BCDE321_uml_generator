@@ -19,9 +19,7 @@ class TestDotInheritance(TestDotAssociation):
         )
 
     def test_to_string(self):
-        expected = (_RELATIONSHIP['target_class'] + ' -> ' + _CLASS_NAME
-                    + ' [\n'
-                    + 'arrowtail=empty\n'
-                    + ']')
+        expected = ('\n%s -> %s [\narrowtail="empty"\n]'
+                    % (_RELATIONSHIP['target_class'], _CLASS_NAME))
         actual = str(self.relationship)
         self.assertEqual(actual, expected)
