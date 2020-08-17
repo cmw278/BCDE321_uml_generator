@@ -24,7 +24,7 @@ class TestDotAssociation(TestCase):
 
     def test_relationship_target_class(self):
         expected = _RELATIONSHIP['target_class']
-        actual = self.relationship.type
+        actual = self.relationship.target_class
         self.assertEqual(actual, expected)
 
     def test_relationship_label(self):
