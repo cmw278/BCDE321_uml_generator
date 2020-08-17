@@ -3,7 +3,6 @@ from dot_formatter import DotAttribute, DotArgument
 
 # Test data dictionary
 from test_data import DATA
-_ATTRIBUTE = DATA['attribute']
 
 
 class TestDotAttribute(TestCase):
@@ -11,7 +10,13 @@ class TestDotAttribute(TestCase):
     def setUp(self):
         # TODO: Implement DotAttribute
         self.skipTest('Awaiting implementation of DotAttribute')
-        self.attribute = DotAttribute(_ATTRIBUTE['name'], _ATTRIBUTE['type'])
+        name = DATA['attribute']['name']
+        type_ = DATA['attribute']['type']
+        self.test_data = {
+            'name': name,
+            'type': type_
+        }
+        self.attribute = DotAttribute(name, type_)
 
     def test_inheritance(self):
         expected = DotArgument
@@ -19,17 +24,17 @@ class TestDotAttribute(TestCase):
         self.assertIsInstance(expected, actual)
 
     def test_attribute_name(self):
-        expected = _ATTRIBUTE['name']
+        expected = self.test_data['name']
         actual = self.attribute.name
         self.assertEqual(actual, expected)
 
     def test_attribute_type(self):
-        expected = _ATTRIBUTE['type']
+        expected = self.test_data['type']
         actual = self.attribute.type
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = ('+ ' + _ATTRIBUTE['name'] + ': '
-                         + _ATTRIBUTE['type'] + '<br/>')
+        expected = ('+ %s: %s<br/>'
+                    % (self.test_data['name'], self.test_data['type']))
         actual = str(self.attribute)
         self.assertEqual(actual, expected)

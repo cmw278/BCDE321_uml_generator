@@ -12,24 +12,10 @@
     "type": "string"
   },
   "relationship": {
-    "association": {
-      "type": "association",
-      "target_class": "NumberSetter"
-    },
-    "inheritance": {
-      "type": "inheritance",
-      "target_class": "NumberSetter"
-    },
-    "aggregation": {
-      "type": "aggregation",
-      "target_class": "NumberSetter",
-      "label": "allMyNumberSetters"
-    },
-    "composition": {
-      "type": "composition",
-      "target_class": "NumberSetter",
-      "label": "allMyNumberSetters"
-    }
+    "source_class": "NumberGetter",
+    "target_class": "NumberSetter",
+    "label": "allMyNumberSetters",
+    "type": "association"
   },
   "class_name": "NumberGetter"
 }
