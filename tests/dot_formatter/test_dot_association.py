@@ -10,8 +10,6 @@ _CLASS_NAME = DATA['class_name']
 class TestDotAssociation(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotAssociation
-        self.skipTest('Awaiting implementation of DotAssociation')
         self.relationship = DotAssociation(
             _CLASS_NAME,
             _RELATIONSHIP['target_class']
