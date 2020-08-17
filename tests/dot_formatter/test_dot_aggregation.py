@@ -25,10 +25,8 @@ class TestDotAggregation(TestDotAssociation):
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = (_RELATIONSHIP['target_class'] + ' -> ' + _CLASS_NAME
-                    + ' [\n'
-                    + 'arrowtail=empty\n'
-                    + 'label="' + _RELATIONSHIP['label'] + '"\n'
-                    + ']')
+        expected = ('\n%s -> %s [\narrowtail=ediamond\nlabel="%s"\n]'
+                    % (_CLASS_NAME, _RELATIONSHIP['target_class'],
+                        _RELATIONSHIP['label']))
         actual = str(self.relationship)
         self.assertEqual(actual, expected)
