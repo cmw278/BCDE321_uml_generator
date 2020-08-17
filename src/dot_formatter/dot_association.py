@@ -10,16 +10,9 @@ class DotAssociation:
                 + self._get_options())
 
     def _get_options(self) -> str:
-        if self._has_options():
-            options = '\n['
-            for option in self._options():
-                options = options + option
-            return options + ']'
-        else:
-            return ''
-
-    def _has_options(self) -> bool:
-        return self.label != ''
+        return ' [\n%s\n]' % '\n'.join(
+            ['%s="%s"' % (key, value) for key, value in self._options()]
+        )
 
     def _options(self):
-        yield '\nlabel="%s"' % self.label
+        yield ('label', self.label)
