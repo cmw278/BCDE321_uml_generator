@@ -1,32 +1,29 @@
 from unittest import TestCase
 from dot_formatter import DotAggregation
-from test_dot_association import TestDotAssociation
+from test_dot_inheritance import TestDotInheritance
 
 # Test data dictionary
 from test_data import DATA
-_RELATIONSHIP = DATA['relationship']['aggregation']
-_CLASS_NAME = DATA['class_name']
 
 
-class TestDotAggregation(TestDotAssociation):
+class TestDotAggregation(TestDotInheritance):
 
     def setUp(self):
         # TODO: Implement DotAggregation
-        self.skipTest("Awaiting implementation of DotAggregation")
+        self.skipTest('Awaiting implementation of DotAggregation')
+        source_class = DATA['relationship']['source_class']
+        target_class = DATA['relationship']['target_class']
+        label = DATA['relationship']['label']
+        self.test_data = {
+            'options': {
+                'label': label,
+                'arrowtail': 'ediamond'
+            },
+            'source_class': target_class,
+            'target_class': source_class,
+        }
         self.relationship = DotAggregation(
-            _CLASS_NAME,
-            _RELATIONSHIP['target_class'],
-            _RELATIONSHIP['label']
+            source_class,
+            target_class,
+            label
         )
-
-    def test_relationship_label(self):
-        expected = _RELATIONSHIP['label']
-        actual = self.relationship.label
-        self.assertEqual(actual, expected)
-
-    def test_to_string(self):
-        expected = ('\n%s -> %s [\narrowtail=ediamond\nlabel="%s"\n]'
-                    % (_CLASS_NAME, _RELATIONSHIP['target_class'],
-                        _RELATIONSHIP['label']))
-        actual = str(self.relationship)
-        self.assertEqual(actual, expected)
