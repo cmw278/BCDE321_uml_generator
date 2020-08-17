@@ -12,7 +12,7 @@ class TestDotComposition(TestDotAssociation):
 
     def setUp(self):
         # TODO: Implement DotComposition
-        self.skipTest("Awaiting implementation of DotComposition")
+        self.skipTest('Awaiting implementation of DotComposition')
         self.relationship = DotComposition(
             _CLASS_NAME,
             _RELATIONSHIP['target_class'],
