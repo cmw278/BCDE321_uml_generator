@@ -12,7 +12,7 @@ class TestDotInheritance(TestDotAssociation):
 
     def setUp(self):
         # TODO: Implement DotInheritance
-        self.skipTest("Awaiting implementation of DotInheritance")
+        self.skipTest('Awaiting implementation of DotInheritance')
         self.relationship = DotInheritance(
             _CLASS_NAME,
             _RELATIONSHIP['target_class']
