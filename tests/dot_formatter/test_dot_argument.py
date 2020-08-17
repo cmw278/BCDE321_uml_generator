@@ -3,14 +3,19 @@ from dot_formatter import DotArgument, DotObject
 
 # Test data dictionary
 from test_data import DATA
-_ARGUMENT = DATA['argument']
 
 
 class TestDotArgument(TestCase):
     def setUp(self):
         # TODO: Implement DotArgument
         self.skipTest('Awaiting implementation of DotArgument')
-        self.argument = DotArgument(_ARGUMENT['name'], _ARGUMENT['type'])
+        name = DATA['argument']['name']
+        type_ = DATA['argument']['type']
+        self.test_data = {
+            'name': name,
+            'type': type_
+        }
+        self.argument = DotArgument(name, type_)
 
     def test_inheritance(self):
         expected = DotObject
@@ -18,16 +23,16 @@ class TestDotArgument(TestCase):
         self.assertIsInstance(expected, actual)
 
     def test_argument_name(self):
-        expected = _ARGUMENT['name']
+        expected = self.test_data['name']
         actual = self.argument.name
         self.assertEqual(actual, expected)
 
     def test_argument_type(self):
-        expected = _ARGUMENT['type']
+        expected = self.test_data['type']
         actual = self.argument.type
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = _ARGUMENT['name'] + ': ' + _ARGUMENT['type']
+        expected = '%s: %s' % (self.test_data['name'], self.test_data['type'])
         actual = str(self.argument)
         self.assertEqual(actual, expected)
