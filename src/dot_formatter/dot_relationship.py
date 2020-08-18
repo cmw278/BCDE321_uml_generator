@@ -1,7 +1,8 @@
-from abc import ABC, abstractmethod
+from abc import abstractmethod
+from dot_formatter import DotObject
 
 
-class DotRelationship(ABC):
+class DotRelationship(DotObject):
 
     def __init__(self, source_class: str, target_class: str, label: str = ''):
         self.source_class = source_class
