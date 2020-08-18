@@ -1,0 +1,21 @@
+{
+  "attribute": {
+    "name": "allMyToys",
+    "type": "Array"
+  },
+  "method": {
+    "name": "addToy",
+    "return_type": "None"
+  },
+  "argument": {
+    "name": "newName",
+    "type": "any"
+  },
+  "relationship": {
+    "source_class": "Toybox",
+    "target_class": "Toy",
+    "label": "allMyToys",
+    "type": "AGGREGATION"
+  },
+  "class_name": "Toybox"
+}
