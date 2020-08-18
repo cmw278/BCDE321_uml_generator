@@ -21,7 +21,7 @@ class TestDotAttribute(TestCase):
     def test_inheritance(self):
         expected = DotArgument
         actual = self.attribute
-        self.assertIsInstance(expected, actual)
+        self.assertIsInstance(actual, expected)
 
     def test_attribute_name(self):
         expected = self.test_data['name']
