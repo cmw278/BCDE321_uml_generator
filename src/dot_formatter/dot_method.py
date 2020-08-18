@@ -15,7 +15,7 @@ class DotMethod(DotObject):
         return new_argument
 
     def __str__(self) -> str:
-        return '+ %s(%s): %s<br/>' % (
+        return '+ %s(%s): %s\\l' % (
             self.name,
             ', '.join([str(argument) for argument in self.all_my_arguments]),
             self.return_type

@@ -34,7 +34,7 @@ class DotClass(DotObject):
         return new_relationship
 
     def __str__(self):
-        return ('%s [\nlabel=<{<B>\\N</B>|%s|%s}>\n]\n%s'
+        return ('%s [\nlabel="{\\N|%s|%s}"\n]\n%s'
                 % (
                     self.name,
                     ''.join([str(an_attribute) for an_attribute
