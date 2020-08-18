@@ -1,5 +1,5 @@
-from dot_formatter import DotAssociation
+from dot_formatter import DotRelationship
 
 
-class DotInheritance(DotAssociation):
+class DotInheritance(DotRelationship):
     pass
