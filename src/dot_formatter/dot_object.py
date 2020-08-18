@@ -2,4 +2,10 @@ from abc import ABC, abstractmethod
 
 
 class DotObject(ABC):
-    pass
+
+    def __init__(self, name: str):
+        self.name = name
+
+    @abstractmethod
+    def __str__(self) -> str:
+        pass
