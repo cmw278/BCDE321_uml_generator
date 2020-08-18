@@ -1,6 +1,6 @@
 from unittest import TestCase
 from dot_formatter import (DotClass, DotObject, DotAttribute,
-                           DotMethod, DotAssociation)
+                           DotMethod, DotAssociation, UMLRelationship)
 
 # Test data dictionary
 from test_data import DATA
@@ -26,10 +26,10 @@ class TestDotClass(TestCase):
     def test_inheritance(self):
         expected = DotObject
         actual = self.class_
-        self.assertIsInstance(expected, actual)
+        self.assertIsInstance(actual, expected)
 
     def test_class__name(self):
-        expected = test_data['class_name']
+        expected = self.test_data['class_name']
         actual = self.class_.name
         self.assertEqual(actual, expected)
 
@@ -54,18 +54,19 @@ class TestDotClass(TestCase):
 
     def test_add_method(self):
         name = self.test_data['method']['name']
-        type_ = self.test_data['method']['type']
+        type_ = self.test_data['method']['return_type']
         expected = DotMethod(name, type_)
         actual = self.add_method()
         self.assertEqual(actual, expected)
 
     def add_relationship(self):
         return self.class_.add_relationship(
+            UMLRelationship.ASSOCIATION,
             self.test_data['target_class']
         )
 
     def test_add_relationship(self):
-        expected = DotRelationship(
+        expected = DotAssociation(
             self.test_data['class_name'],
             self.test_data['target_class']
         )
@@ -73,12 +74,16 @@ class TestDotClass(TestCase):
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
+        class_name = self.test_data['class_name']
         attribute = self.add_attribute()
         method = self.add_method()
         relationship = self.add_relationship()
-        expected = ('<{<B>\\N</B>'
-                    + '|' + str(attribute)
-                    + '|' + str(method) + '}>'
-                    + '\n' + str(relationship))
+        expected = ('%s [\nlabel=<{<B>\\N</B>|%s|%s}>\n]\n%s'
+                    % (
+                        class_name,
+                        str(attribute),
+                        str(method),
+                        str(relationship)
+                    ))
         actual = str(self.class_)
         self.assertEqual(actual, expected)
