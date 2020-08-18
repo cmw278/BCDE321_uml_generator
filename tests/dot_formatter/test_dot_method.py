@@ -23,16 +23,16 @@ class TestDotMethod(TestCase):
     def test_inheritance(self):
         expected = DotObject
         actual = self.method
-        self.assertIsInstance(expected, actual)
+        self.assertIsInstance(actual, expected)
 
     def test_method_name(self):
-        expected = _METHOD['name']
+        expected = self.test_data['name']
         actual = self.method.name
         self.assertEqual(actual, expected)
 
     def test_method_return_type(self):
-        expected = _METHOD['return_type']
-        actual = self.method.type
+        expected = self.test_data['return_type']
+        actual = self.method.return_type
         self.assertEqual(actual, expected)
 
     def test_add_argument(self):
