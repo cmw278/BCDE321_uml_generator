@@ -1,0 +1,23 @@
+digraph ToyboxToy {
+label=<<b>\G</b>>
+labelloc=t
+pad=0.2
+node [
+shape=record
+style=bold
+]
+edge [
+arrowtail=none
+dir=back
+]
+Toy [
+label="{\N|+ name: any\l+ colour: any\l+ cost: any\l|+ constructor(name: any, colour: any, cost: any)\l+ toString(): String\l}"
+]
+Toybox [
+label="{\N|+ allMyToys: Array\l|+ constructor()\l+ getToyCount(): Number\l+ toString(): String\l}"
+]
+Toybox -> Toy [
+label="allMyToys"
+arrowtail="ediamond"
+]
+}
