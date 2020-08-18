@@ -8,8 +8,6 @@ from test_data import DATA
 class TestDotMethod(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotMethod
-        self.skipTest('Awaiting implementation of DotMethod')
         name = DATA['method']['name']
         return_type = DATA['method']['return_type']
         argument = DATA['argument']
