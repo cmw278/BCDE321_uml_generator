@@ -45,6 +45,6 @@ class TestDotMethod(TestCase):
     def test_to_string(self):
         name = self.test_data['name']
         return_type = self.test_data['return_type']
-        expected = '+ %s(): %s<br/>' % (name, return_type)
+        expected = '+ %s(): %s\\l' % (name, return_type)
         actual = str(self.method)
         self.assertEqual(actual, expected)

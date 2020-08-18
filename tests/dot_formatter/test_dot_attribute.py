@@ -34,7 +34,7 @@ class TestDotAttribute(TestCase):
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = ('+ %s: %s<br/>'
+        expected = ('+ %s: %s\\l'
                     % (self.test_data['name'], self.test_data['type']))
         actual = str(self.attribute)
         self.assertEqual(actual, expected)
