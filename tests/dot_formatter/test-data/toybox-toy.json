@@ -1,0 +1,92 @@
+{
+  "folder_name": "ToyboxToy",
+  "classes": [
+    {
+      "name": "Toy",
+      "attributes": [
+        {
+          "name": "name",
+          "type": "any"
+        },
+        {
+          "name": "colour",
+          "type": "any"
+        },
+        {
+          "name": "cost",
+          "type": "any"
+        }
+      ],
+      "methods": [
+        {
+          "name": "constructor",
+          "return_type": "",
+          "arguments": [
+            {
+              "name": "name",
+              "type": "any"
+            },
+            {
+              "name": "colour",
+              "type": "any"
+            },
+            {
+              "name": "cost",
+              "type": "any"
+            }
+          ]
+        },
+        {
+          "name": "toString",
+          "return_type": "String"
+        }
+      ]
+    },
+    {
+      "name": "Toybox",
+      "attributes": [
+        {
+          "name": "allMyToys",
+          "type": "Array"
+        }
+      ],
+      "methods": [
+        {
+          "name": "constructor"
+        },
+        {
+          "name": "addToy",
+          "arguments": [
+            {
+              "name": "newName",
+              "type": "any"
+            },
+            {
+              "name": "newColour",
+              "type": "any"
+            },
+            {
+              "name": "newCost",
+              "type": "any"
+            }
+          ]
+        },
+        {
+          "name": "getToyCount",
+          "return_type": "Number"
+        },
+        {
+          "name": "toString",
+          "return_type": "String"
+        }
+      ],
+      "relationships": [
+        {
+          "target_class": "Toy",
+          "type": "AGGREGATION",
+          "label": "allMyToys"
+        }
+      ]
+    }
+  ]
+}
