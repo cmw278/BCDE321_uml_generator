@@ -20,7 +20,7 @@ class TestDotArgument(TestCase):
     def test_inheritance(self):
         expected = DotObject
         actual = self.argument
-        self.assertIsInstance(expected, actual)
+        self.assertIsInstance(actual, expected)
 
     def test_argument_name(self):
         expected = self.test_data['name']
