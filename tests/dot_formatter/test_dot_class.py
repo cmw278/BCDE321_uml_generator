@@ -13,11 +13,13 @@ class TestDotClass(TestCase):
         method = DATA['method']
         attribute = DATA['attribute']
         target_class = DATA['relationship']['target_class']
+        relationship_type = DATA['relationship']['type']
         self.test_data = {
             'class_name': class_name,
             'method': method,
             'attribute': attribute,
-            'target_class': target_class
+            'target_class': target_class,
+            'relationship_type': relationship_type
         }
         self.class_ = DotClass(class_name)
 
@@ -59,14 +61,15 @@ class TestDotClass(TestCase):
 
     def add_relationship(self):
         return self.class_.add_relationship(
-            UMLRelationship.ASSOCIATION,
+            UMLRelationship[self.test_data['relationship_type']],
             self.test_data['target_class']
         )
 
     def test_add_relationship(self):
-        expected = DotAssociation(
+        expected = UMLRelationship[self.test_data['relationship_type']].make(
             self.test_data['class_name'],
-            self.test_data['target_class']
+            self.test_data['target_class'],
+            ''
         )
         actual = self.add_relationship()
         self.assertEqual(actual, expected)
