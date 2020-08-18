@@ -5,4 +5,4 @@ class DotAttribute(DotArgument):
 
     def __str__(self):
         super_string = super().__str__()
-        return '+ %s<br/>' % super_string
+        return '+ %s\\l' % super_string
