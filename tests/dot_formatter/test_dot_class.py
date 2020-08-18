@@ -76,7 +76,7 @@ class TestDotClass(TestCase):
         attribute = self.add_attribute()
         method = self.add_method()
         relationship = self.add_relationship()
-        expected = ('%s [\nlabel=<{<B>\\N</B>|%s|%s}>\n]\n%s'
+        expected = ('%s [\nlabel="{\\N|%s|%s}"\n]\n%s'
                     % (
                         class_name,
                         str(attribute),
