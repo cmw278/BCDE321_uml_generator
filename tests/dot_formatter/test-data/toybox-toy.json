@@ -79,14 +79,14 @@
           "name": "toString",
           "return_type": "String"
         }
-      ],
-      "relationships": [
-        {
-          "target_class": "Toy",
-          "type": "AGGREGATION",
-          "label": "allMyToys"
-        }
       ]
+    }
+  ],
+  "relationships": [
+    {
+      "target_class": "Toy",
+      "type": "AGGREGATION",
+      "label": "allMyToys"
     }
   ]
 }

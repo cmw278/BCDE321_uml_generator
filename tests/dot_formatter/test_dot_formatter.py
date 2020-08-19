@@ -9,7 +9,7 @@ class TestDotFormatter(TestCase):
 
     def setUp(self):
         # TODO: Implement DotFormatter
-        self.skipTest('Awaiting implementation of DotFormatter')
+        # self.skipTest('Awaiting implementation of DotFormatter')
         self.test_data = TOYBOX_TOY
         self.expected_output = EXPECTED_OUTPUT
         self.formatter = DotFormatter(self.test_data)
@@ -20,8 +20,8 @@ class TestDotFormatter(TestCase):
         self.assertEqual(expected, actual)
 
     def test_two_classes(self):
-        expected = self.formatter
-        actual = self.add_attribute()
+        expected = len(self.test_data['classes'])
+        actual = len(self.formatter.all_my_classes)
         self.assertEqual(expected, actual)
 
     def get_class_expected_actual(self, ref_index: int) -> (list, DotClass):
@@ -54,10 +54,14 @@ class TestDotFormatter(TestCase):
         )
 
     def test_class_one_has_two_methods(self):
+        # TODO : WIP
+        self.skipTest('WIP')
         expected, actual = self.count_methods_expected_actual(0)
         self.assertEqual(expected, actual)
 
     def test_class_two_has_four_methods(self):
+        # TODO: WIP
+        self.skipTest('WIP')
         expected, actual = self.count_methods_expected_actual(1)
         self.assertEqual(expected, actual)
 
@@ -67,6 +71,8 @@ class TestDotFormatter(TestCase):
         self.assertEqual(expected, actual)
 
     def test_to_string(self):
+        # TODO: WIP
+        self.skipTest('WIP')
         expected = self.expected_output
         actual = str(self.formatter)
         self.assertEqual(expected, actual)
