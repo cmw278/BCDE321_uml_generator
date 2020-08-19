@@ -12,14 +12,10 @@ class TestDotClass(TestCase):
         class_name = DATA['class_name']
         method = DATA['method']
         attribute = DATA['attribute']
-        target_class = DATA['relationship']['target_class']
-        relationship_type = DATA['relationship']['type']
         self.test_data = {
             'class_name': class_name,
             'method': method,
             'attribute': attribute,
-            'target_class': target_class,
-            'relationship_type': relationship_type
         }
         self.class_ = DotClass(class_name)
 
@@ -59,32 +55,15 @@ class TestDotClass(TestCase):
         actual = self.add_method()
         self.assertEqual(actual, expected)
 
-    def add_relationship(self):
-        return self.class_.add_relationship(
-            UMLRelationship[self.test_data['relationship_type']],
-            self.test_data['target_class']
-        )
-
-    def test_add_relationship(self):
-        expected = UMLRelationship[self.test_data['relationship_type']].make(
-            self.test_data['class_name'],
-            self.test_data['target_class'],
-            ''
-        )
-        actual = self.add_relationship()
-        self.assertEqual(actual, expected)
-
     def test_to_string(self):
         class_name = self.test_data['class_name']
         attribute = self.add_attribute()
         method = self.add_method()
-        relationship = self.add_relationship()
-        expected = ('%s [\nlabel="{\\N|%s|%s}"\n]\n%s'
+        expected = ('%s [\nlabel="{\\N|%s|%s}"\n]'
                     % (
                         class_name,
                         str(attribute),
-                        str(method),
-                        str(relationship)
+                        str(method)
                     ))
         actual = str(self.class_)
         self.assertEqual(actual, expected)
