@@ -8,8 +8,6 @@ from test_data import DATA
 class TestDotAttribute(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotAttribute
-        self.skipTest('Awaiting implementation of DotAttribute')
         name = DATA['attribute']['name']
         type_ = DATA['attribute']['type']
         self.test_data = {
