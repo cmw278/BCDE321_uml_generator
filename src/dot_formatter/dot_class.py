@@ -22,25 +22,12 @@ class DotClass(DotObject):
         self.all_my_methods.append(new_method)
         return new_method
 
-    def add_relationship(self, relationship_type: UMLRelationship,
-                         target_class: str,
-                         label: str = '') -> DotRelationship:
-        """relationship_type is an Enum instance that references
-        DotRelationship subclasses. relationship_type.make(*args)
-        instantiates the relevant class using the default constructor."""
-        new_relationship = (relationship_type
-                            .make(self.name, target_class, label))
-        self.all_my_relationships.append(new_relationship)
-        return new_relationship
-
     def __str__(self):
-        return ('%s [\nlabel="{\\N|%s|%s}"\n]\n%s'
+        return ('%s [\nlabel="{\\N|%s|%s}"\n]'
                 % (
                     self.name,
                     ''.join([str(an_attribute) for an_attribute
                              in self.all_my_attributes]),
                     ''.join([str(a_method) for a_method
-                             in self.all_my_methods]),
-                    '\n'.join([str(a_relationship) for a_relationship
-                               in self.all_my_relationships])
+                             in self.all_my_methods])
                 ))
