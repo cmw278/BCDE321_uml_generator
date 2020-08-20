@@ -14,7 +14,7 @@ Toy [
 label="{\N|+ name: any\l+ colour: any\l+ cost: any\l|+ constructor(name: any, colour: any, cost: any)\l+ toString(): String\l}"
 ]
 Toybox [
-label="{\N|+ allMyToys: Array\l|+ constructor()\l+ getToyCount(): Number\l+ toString(): String\l}"
+label="{\N|+ allMyToys: Array\l|+ constructor()\l+ addToy(newName: any, newColour: any, newCost: any)\l+ getToyCount(): Number\l+ toString(): String\l}"
 ]
 Toybox -> Toy [
 label="allMyToys"
