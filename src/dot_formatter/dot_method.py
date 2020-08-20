@@ -3,7 +3,7 @@ from dot_formatter import DotObject, DotArgument
 
 class DotMethod(DotObject):
 
-    def __init__(self, name: str, return_type: str):
+    def __init__(self, name: str, return_type: str = None):
         super().__init__(name)
         self.return_type = return_type
         self.all_my_arguments = []
@@ -15,8 +15,11 @@ class DotMethod(DotObject):
         return new_argument
 
     def __str__(self) -> str:
-        return '+ %s(%s): %s\\l' % (
+        arguments = (
+            ', '.join([str(argument) for argument in self.all_my_arguments])
+        )
+        return '+ %s(%s)%s\\l' % (
             self.name,
-            ', '.join([str(argument) for argument in self.all_my_arguments]),
-            self.return_type
+            arguments,
+            (': %s' % self.return_type) if self.return_type is not None else ''
         )
