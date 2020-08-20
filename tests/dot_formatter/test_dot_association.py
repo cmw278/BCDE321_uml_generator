@@ -40,7 +40,7 @@ class TestDotAssociation(TestCase):
         self.assertEqual(actual, expected)
 
     def test_to_string(self):
-        expected = ('\n%s -> %s [\nlabel=""\n]'
+        expected = ('%s -> %s [\nlabel=""\n]'
                     % (
                         self.test_data['target_class'],
                         self.test_data['source_class']

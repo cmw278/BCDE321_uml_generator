@@ -31,7 +31,7 @@ class TestDotInheritance(TestDotAssociation):
         target = self.test_data['target_class']
         label = self.test_data['options']['label']
         arrow = self.test_data['options']['arrowtail']
-        expected = ('\n%s -> %s [\nlabel="%s"\narrowtail="%s"\n]'
+        expected = ('%s -> %s [\nlabel="%s"\narrowtail="%s"\n]'
                     % (target, source, label, arrow))
         actual = str(self.relationship)
         self.assertEqual(actual, expected)

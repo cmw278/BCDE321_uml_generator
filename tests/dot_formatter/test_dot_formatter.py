@@ -54,14 +54,10 @@ class TestDotFormatter(TestCase):
         )
 
     def test_class_one_has_two_methods(self):
-        # TODO : WIP
-        self.skipTest('WIP')
         expected, actual = self.count_methods_expected_actual(0)
         self.assertEqual(expected, actual)
 
     def test_class_two_has_four_methods(self):
-        # TODO: WIP
-        self.skipTest('WIP')
         expected, actual = self.count_methods_expected_actual(1)
         self.assertEqual(expected, actual)
 
@@ -71,8 +67,6 @@ class TestDotFormatter(TestCase):
         self.assertEqual(expected, actual)
 
     def test_to_string(self):
-        # TODO: WIP
-        self.skipTest('WIP')
         expected = self.expected_output
         actual = str(self.formatter)
         self.assertEqual(expected, actual)
