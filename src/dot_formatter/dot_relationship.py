@@ -14,7 +14,7 @@ class DotRelationship(DotObject):
         pass
 
     def __str__(self) -> str:
-        return ('\n%s -> %s' % (self.target_class, self.source_class)
+        return ('%s -> %s' % (self.target_class, self.source_class)
                 + self._get_options())
 
     def _get_options(self) -> str:
