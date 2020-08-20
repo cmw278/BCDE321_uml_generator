@@ -11,13 +11,13 @@ class DotClass(DotObject):
         self.all_my_relationships = []
 
     def add_attribute(self, attribute_name: str,
-                      attribute_type: str) -> DotAttribute:
+                      attribute_type: str = None) -> DotAttribute:
         new_attribute = DotAttribute(attribute_name, attribute_type)
         self.all_my_attributes.append(new_attribute)
         return new_attribute
 
     def add_method(self, method_name: str,
-                   method_return_type: str) -> DotMethod:
+                   method_return_type: str = None) -> DotMethod:
         new_method = DotMethod(method_name, method_return_type)
         self.all_my_methods.append(new_method)
         return new_method
