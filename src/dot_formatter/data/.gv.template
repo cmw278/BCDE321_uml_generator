@@ -1,0 +1,14 @@
+digraph %s {
+label=<<b>\G</b>>
+labelloc=t
+pad=0.2
+node [
+shape=record
+style=bold
+]
+edge [
+arrowtail=none
+dir=back
+]
+%s
+}
