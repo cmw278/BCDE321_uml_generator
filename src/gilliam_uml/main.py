@@ -1,5 +1,6 @@
 import sys
 from cmd import Cmd
+from .controller import GilliamController
 
 
 class GilliamPrompt(Cmd):

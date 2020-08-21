@@ -1,4 +1,5 @@
 from .main import GilliamPrompt
+from .controller import GilliamController
 
 
 def launch_prompt():
