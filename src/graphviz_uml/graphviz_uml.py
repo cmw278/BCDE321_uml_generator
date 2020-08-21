@@ -6,11 +6,11 @@ class GraphvizUML(Source, DotFormatter):
     """A UML rendering engine that wraps dot_formatter.DotFormatter and
     graphviz.Source to render the output in one of the image formats
     supported by graphviz.
-    
+
     GraphvizUML uses multiple inheritance, so an instance can be interacted
     using both the DotFormatter API AND the graphviz.Source API, although
     some behaviour is altered.
-    
+
     All altered behaviour is documented in the method docstrings."""
 
     def __init__(
@@ -20,7 +20,8 @@ class GraphvizUML(Source, DotFormatter):
         template_path: str = None,
         filename: str = None,
         directory: str = None,
-        format: str = 'png'):
+        format: str = 'png'
+    ):
         """Creates a GraphvizUML instance that may be interacted with using
         the API of graphviz.Source AND dot_formatter.DotFormatter.
         DotFormatter is instantiated first, then cast as string to instantiate
@@ -57,14 +58,14 @@ class GraphvizUML(Source, DotFormatter):
         DotFormatter.__init__(
             self,
             system_dict,
-            template_path = template_path
+            template_path=template_path
         )
         Source.__init__(
             self,
             str(self),
-            filename = self.name if filename is None else filename,
-            directory = directory,
-            format = format
+            filename=self.name if filename is None else filename,
+            directory=directory,
+            format=format
         )
 
     def view(
@@ -73,13 +74,14 @@ class GraphvizUML(Source, DotFormatter):
         filename: str = None,
         directory: str = None,
         cleanup: bool = True,
-        format: str = None):
+        format: str = None
+    ):
         """Save the UML diagram to file, open the result in a viewer.
-        
+
         ---
 
         Optional Keyword Arguments:
-        
+
         filename – Filename for saving the source (defaults to name + '.gv')
 
         directory – (Sub)directory for source saving and rendering.
@@ -92,9 +94,9 @@ class GraphvizUML(Source, DotFormatter):
         """
         Source.render(
             self,
-            view = True,
-            filename = filename,
-            directory = directory,
-            cleanup = cleanup,
-            format = format
+            view=True,
+            filename=filename,
+            directory=directory,
+            cleanup=cleanup,
+            format=format
         )
