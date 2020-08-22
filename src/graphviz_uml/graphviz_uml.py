@@ -56,8 +56,12 @@ class GraphvizUML(Source, DotFormatter):
                         directory=directory, format=format)
 
     def view(self, *, filename: str = None, directory: str = None,
-             cleanup: bool = True, format: str = None):
+             cleanup: bool = True, format: str = None) -> str:
         """Save the UML diagram to file, open the result in a viewer.
+
+        ---
+        `returns: str`
+        > Returns the filepath where the output was saved.
 
         ---
         Optional Keyword Arguments:
@@ -74,5 +78,5 @@ class GraphvizUML(Source, DotFormatter):
         `format: str`
         > The output format used for rendering (pdf, png, etc.).
         """
-        Source.render(self, view=True, filename=filename,
+        return Source.render(self, view=True, filename=filename,
                       directory=directory, cleanup=cleanup, format=format)
