@@ -79,4 +79,5 @@ class GraphvizUML(Source, DotFormatter):
         > The output format used for rendering (pdf, png, etc.).
         """
         return Source.render(self, view=True, filename=filename,
-                      directory=directory, cleanup=cleanup, format=format)
+                             directory=directory,
+                             cleanup=cleanup, format=format)

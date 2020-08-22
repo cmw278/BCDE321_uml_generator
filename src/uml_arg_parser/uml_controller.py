@@ -10,12 +10,13 @@ config_file = resource_filename(__name__, 'data/logging.conf')
 logging.config.fileConfig(config_file)
 log = logging.getLogger('Get-UML')
 
+
 class UMLController:
     def __init__(self):
         log.info('System initialising...')
         self._js_dict = None
         self._uml_generator = None
-    
+
     def handle_args(self, args: object) -> None:
         if args.verbose:
             log.setLevel(logging.DEBUG)
@@ -33,13 +34,13 @@ class UMLController:
                 self.load_json(targetfile)
             cleanup = not args.save_dot
             log.debug('%s DOT source file...'
-                    % ('Not keeping' if cleanup else 'Keeping'))
+                      % ('Not keeping' if cleanup else 'Keeping'))
             if args.view:
                 self.view_uml(filename=args.name, directory=args.destination,
-                            format=args.format, cleanup=cleanup)
+                              format=args.format, cleanup=cleanup)
             else:
                 self.save_file(filename=args.name, directory=args.destination,
-                            format=args.format, cleanup=cleanup)
+                               format=args.format, cleanup=cleanup)
         except Exception as error:
             log.critical(
                 'Operation failed with the following error:\n\n%s\n'
@@ -47,8 +48,6 @@ class UMLController:
             log.debug(traceback.format_exc())
             log.critical('Exiting now.')
             exit()
-        
-
 
     def load_file(self, targetfile: str) -> None:
         """Load a file into memory and prepare it for generating a UML 2
@@ -63,12 +62,13 @@ class UMLController:
         """
         path = Path(targetfile)
         log.info('Attempting to read from %s' % path)
-        raise NotImplementedError('WIP: This interface has not been implemented yet')
+        raise NotImplementedError(
+            'WIP: This interface has not been implemented yet')
         if not path.is_dir():
             pass
         elif path.is_dir():
             pass
-    
+
     def load_json(self, targetfile: str) -> None:
         """Load a JSON file and prepare it for generating a UML 2
         class diagram.
@@ -93,7 +93,6 @@ class UMLController:
         """
         self._get_uml_generator()
         return str(self._uml_generator)
-
 
     def save_file(self, *, filename: str = None, directory: str = None,
                   format: str = 'png', cleanup: bool = True) -> None:

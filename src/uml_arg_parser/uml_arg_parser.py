@@ -7,6 +7,7 @@ class UMLArgParser(ArgumentParser):
     """A wrapper for ArgumentsParser that defines and processes arguments for
     `uml-generator`
     """
+
     def __init__(self):
         super().__init__(
             description=self._help('description'),
@@ -48,6 +49,7 @@ class UMLArgParser(ArgumentParser):
 
     def _go(self, args: Namespace) -> None:
         self._uml_controller.handle_args(args)
+
 
 if __name__ == '__main__':
     parser = UMLArgParser()
