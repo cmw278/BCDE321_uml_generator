@@ -1,0 +1,3 @@
+Used during development.
+This option tells the analyzer to look for a single
+JSON file instead of one or more JavaScript files.

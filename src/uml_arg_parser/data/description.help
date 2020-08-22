@@ -1,0 +1,1 @@
+%(prog)s analyzes JavaScript source-code and renders the identified system as a UML 2 class diagram.

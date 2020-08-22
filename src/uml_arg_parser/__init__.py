@@ -1,6 +1,7 @@
+from .uml_controller import UMLController
 from .uml_arg_parser import UMLArgParser
 
 
-if __name__ == '__main__':
+def get_uml():
     parser = UMLArgParser()
     parser.parse_args()
