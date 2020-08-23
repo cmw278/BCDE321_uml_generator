@@ -74,7 +74,7 @@ class UMLController:
     def load_file(self, path: Path, analyzer: JsAnalyzer) -> None:
         """Load a file into memory and prepare it for generating a UML 2
         class diagram.
-        
+
         ---
         Required Positional Arguments:
 
