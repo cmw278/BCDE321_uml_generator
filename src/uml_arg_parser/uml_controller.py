@@ -1,4 +1,5 @@
 from graphviz_uml import GraphvizUML
+from js_analyzer import JsAnalyzer
 from pathlib import Path
 from pkg_resources import resource_filename
 import logging
@@ -7,11 +8,13 @@ import traceback
 import json
 
 config_file = resource_filename(__name__, 'data/logging.conf')
-logging.config.fileConfig(config_file)
+logging.config.fileConfig(config_file, disable_existing_loggers=False)
 log = logging.getLogger('Get-UML')
 
 
 class UMLController:
+    _recurse: bool = True
+
     def __init__(self):
         log.info('System initialising...')
         self._js_dict = None
@@ -19,16 +22,19 @@ class UMLController:
 
     def handle_args(self, args: object) -> None:
         if args.verbose:
-            log.setLevel(logging.DEBUG)
+            self.log_level = logging.DEBUG
         elif args.quiet:
-            log.setLevel(logging.WARN)
+            self.log_level = logging.WARN
+        else:
+            self.log_level = logging.INFO
+        log.setLevel(self.log_level)
         log.debug('Handling command line arguments')
         log.debug('Arguments received:\n\n%s\n' % args)
         targetfile = str(args.source)
         try:
             if not args.json:
                 log.debug('Processing as JavaScript source')
-                self.load_file(targetfile)
+                self.analyze(targetfile)
             else:
                 log.debug('Processing as JSON source')
                 self.load_json(targetfile)
@@ -49,9 +55,8 @@ class UMLController:
             log.critical('Exiting now.')
             exit()
 
-    def load_file(self, targetfile: str) -> None:
-        """Load a file into memory and prepare it for generating a UML 2
-        class diagram.
+    def analyze(self, targetfile: str) -> None:
+        """Start the JavaScript analyzer and load target file(s).
 
         ---
         Required Positional Arguments:
@@ -61,13 +66,31 @@ class UMLController:
         a relative or absolute path.
         """
         path = Path(targetfile)
+        analyzer = JsAnalyzer(path.stem, log_level=self.log_level)
         log.info('Attempting to read from %s' % path)
-        raise NotImplementedError(
-            'WIP: This interface has not been implemented yet')
+        self.load_file(path, analyzer)
+        self._js_dict = analyzer.to_dict()
+
+    def load_file(self, path: Path, analyzer: JsAnalyzer) -> None:
+        """Load a file into memory and prepare it for generating a UML 2
+        class diagram.
+        
+        ---
+        Required Positional Arguments:
+
+        `[0] path: Path`
+        > The path to the file or directory you wish to open. Can be
+        a relative or absolute path.
+
+        `[1] analyzer: JsAnalyzer`
+        > The analyzer instance that will read the file contents.
+        """
+        log.debug('Loading path %s' % path)
         if not path.is_dir():
-            pass
-        elif path.is_dir():
-            pass
+            analyzer.load_file(path)
+        elif path.is_dir() and self._recurse:
+            for next_path in path.iterdir():
+                self.load_file(next_path, analyzer)
 
     def load_json(self, targetfile: str) -> None:
         """Load a JSON file and prepare it for generating a UML 2
