@@ -1,0 +1,2 @@
+class JsMethod:
+    pass
