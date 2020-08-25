@@ -6,6 +6,7 @@ import logging
 import logging.config
 import traceback
 import json
+import re
 
 config_file = resource_filename(__name__, 'data/logging.conf')
 logging.config.fileConfig(config_file, disable_existing_loggers=False)
@@ -34,7 +35,7 @@ class UMLController:
         try:
             if not args.json:
                 log.debug('Processing as JavaScript source')
-                self.analyze(targetfile)
+                self.analyze(targetfile, name=args.name)
             else:
                 log.debug('Processing as JSON source')
                 self.load_json(targetfile)
@@ -55,7 +56,7 @@ class UMLController:
             log.critical('Exiting now.')
             exit()
 
-    def analyze(self, targetfile: str) -> None:
+    def analyze(self, targetfile: str, *, name: str = None) -> None:
         """Start the JavaScript analyzer and load target file(s).
 
         ---
@@ -66,7 +67,13 @@ class UMLController:
         a relative or absolute path.
         """
         path = Path(targetfile)
-        analyzer = JsAnalyzer(path.stem, log_level=self.log_level)
+
+        if name is None:
+            name = path.stem
+        name = re.sub('[^\\w]', '', name)
+        analyzer = JsAnalyzer(name, log_level=self.log_level)
+        log.info('Analyzing %s...' % name)
+
         log.info('Attempting to read from %s' % path)
         self.load_file(path, analyzer)
         self._js_dict = analyzer.to_dict()
