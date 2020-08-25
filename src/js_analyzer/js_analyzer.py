@@ -17,8 +17,9 @@ class JsAnalyzer:
 
     def load_file(self, filepath: Path) -> None:
         if filepath.suffix != '.js':
-            log.warning('Unsupported file-type `%s`. Skipping file %s'
+            log.warning('Unsupported file-type `%s`. Skipping file `%s`'
                         % (filepath.suffix, filepath.name))
+            return None
         log.info('Opening file: %s' % filepath)
         file_ = open(filepath)
         log.debug('File opened.')

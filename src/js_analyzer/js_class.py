@@ -26,7 +26,7 @@ class JsClass:
         for method_data in data.body:
             if method_data.type == 'MethodDefinition':
                 self.methods.append(JsMethod(method_data,
-                                    log_level=self._log_level))
+                                             log_level=self._log_level))
 
     def find_attributes(self) -> None:
         for method in self.methods:
