@@ -1,0 +1,17 @@
+{
+  "name": "addToy",
+  "arguments": [
+      {
+          "name": "newName",
+          "type": "any"
+      },
+      {
+          "name": "newColour",
+          "type": "any"
+      },
+      {
+          "name": "newCost",
+          "type": "any"
+      }
+  ]
+}

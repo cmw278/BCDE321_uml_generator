@@ -1,0 +1,40 @@
+{
+  "name": "Toybox",
+  "attributes": [
+      {
+        "name": "allMyToys",
+        "type": "Array"
+      }
+    ],
+    "methods": [
+      {
+        "name": "constructor",
+        "arguments": []
+      },
+      {
+        "name": "addToy",
+        "arguments": [
+          {
+            "name": "newName",
+            "type": "any"
+          },
+          {
+            "name": "newColour",
+            "type": "any"
+          },
+          {
+            "name": "newCost",
+            "type": "any"
+          }
+        ]
+      },
+      {
+        "name": "getToyCount",
+        "arguments": []
+      },
+      {
+        "name": "toString",
+        "arguments": []
+      }
+  ]
+}
