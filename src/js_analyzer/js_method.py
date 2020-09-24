@@ -5,9 +5,7 @@ log = logging.getLogger('JsMethod')
 
 
 class JsMethod:
-    def __init__(self, data: object, *, log_level: int = logging.INFO):
-        self._log_level = log_level
-        log.setLevel(log_level)
+    def __init__(self, data: object):
         self.name = data.key.name
         self._body = data.value.body
         log.info('Found method %s()' % self.name)
