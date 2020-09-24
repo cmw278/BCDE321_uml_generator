@@ -5,9 +5,7 @@ log = logging.getLogger('JsClass')
 
 
 class JsClass:
-    def __init__(self, data: object, *, log_level: int = logging.INFO):
-        self._log_level = log_level
-        log.setLevel(log_level)
+    def __init__(self, data: object):
         self.name = data.id.name
         log.info('Found class %s' % self.name)
         self.methods = []
@@ -25,8 +23,7 @@ class JsClass:
     def find_methods(self, data: object) -> None:
         for method_data in data.body:
             if method_data.type == 'MethodDefinition':
-                self.methods.append(JsMethod(method_data,
-                                             log_level=self._log_level))
+                self.methods.append(JsMethod(method_data))
 
     def find_attributes(self) -> None:
         for method in self.methods:

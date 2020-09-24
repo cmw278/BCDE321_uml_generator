@@ -1,6 +1,6 @@
-%(prog)s can produce diagrams in a variety of commonly available formats.
+Diagrams can be produced in a variety of commonly available formats.
 
-(default: %(default)s)
+(default: pdf)
 
 Some of the most popular formats supported are:
 

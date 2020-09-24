@@ -7,17 +7,15 @@ log = logging.getLogger('JsAnalyzer')
 
 
 class JsAnalyzer:
-    def __init__(self, name: str, *, log_level: int = logging.INFO):
-        self._log_level = log_level
-        log.setLevel(log_level)
+    def __init__(self, name: str):
         log.debug('Initializing analyzer...')
         log.info('Analyzing %s...' % name)
         self.name = name
         self.classes = []
 
     def load_file(self, filepath: Path) -> None:
-        if filepath.suffix != '.js':
-            log.warning('Unsupported file-type `%s`. Skipping file `%s`'
+        if filepath.suffix.lower() != '.js':
+            log.warning('Cannot process `%s` filetype. Skipping file `%s`'
                         % (filepath.suffix, filepath.name))
             return None
         log.info('Opening file: %s' % filepath)
@@ -32,8 +30,7 @@ class JsAnalyzer:
         log.debug('Searching for classes...')
         for class_data in data.body:
             if class_data.type == 'ClassDeclaration':
-                self.classes.append(
-                    JsClass(class_data, log_level=self._log_level))
+                self.classes.append(JsClass(class_data))
 
     def to_dict(self) -> dict:
         return {
