@@ -1,6 +1,5 @@
 from .abstract_view import AbstractView
 from .cmd_controller import CmdController
-from .path_parser import PathParser
 from .uml_arg_builder import UMLArgBuilder
 from .uml_cmd import UMLCmd
 
