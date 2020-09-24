@@ -4,13 +4,13 @@ import logging
 
 class AbstractView (ABC):
     @abstractmethod
-    def show(self, msg: str) -> str:
+    def show(self, msg: str) -> None:
         """Show a message to the user.
         """
         pass
 
     @abstractmethod
-    def get_input(self, msg: str = None):
+    def get_input(self, msg: str = None) -> str:
         """Get input frmo the user.
         """
         pass
