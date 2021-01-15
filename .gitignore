@@ -9,6 +9,9 @@ Documentation/
 .tox/
 .idea/
 .vs/
+htmlcov/
+
+.coverage
 
 # The following ignores provided by octocat #
 #  https://gist.github.com/octocat/9257657  #
