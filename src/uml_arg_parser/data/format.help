@@ -1,0 +1,9 @@
+Diagrams can be produced in a variety of commonly available formats.
+
+(default: pdf)
+
+Some of the most popular formats supported are:
+
+png, bmp, jpeg, gif, svg, pdf.
+
+More documentation on supported formats can be found at https://graphviz.org/doc/info/output.html

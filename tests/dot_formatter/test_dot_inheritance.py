@@ -9,8 +9,6 @@ from test_data import DATA
 class TestDotInheritance(TestDotAssociation):
 
     def setUp(self):
-        # TODO: Implement DotInheritance
-        self.skipTest('Awaiting implementation of DotInheritance')
         source_class = DATA['relationship']['source_class']
         target_class = DATA['relationship']['target_class']
         self.test_data = {

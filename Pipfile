@@ -11,3 +11,5 @@ pytest = "*"
 tox = "*"
 
 [packages]
+graphviz = "*"
+esprima = "*"

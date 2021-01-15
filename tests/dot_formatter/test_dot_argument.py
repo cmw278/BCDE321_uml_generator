@@ -7,8 +7,6 @@ from test_data import DATA
 
 class TestDotArgument(TestCase):
     def setUp(self):
-        # TODO: Implement DotArgument
-        self.skipTest('Awaiting implementation of DotArgument')
         name = DATA['argument']['name']
         type_ = DATA['argument']['type']
         self.test_data = {

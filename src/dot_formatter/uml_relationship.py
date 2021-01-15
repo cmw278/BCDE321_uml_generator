@@ -10,3 +10,12 @@ class UMLRelationship(Enum):
     can then instantiate the appropriate DotRelationship class by calling
     UMLRelationship.make() with the required arguments.
     """
+
+    ASSOCIATION = DotAssociation
+    INHERITANCE = DotInheritance
+    AGGREGATION = DotAggregation
+    COMPOSITION = DotComposition
+
+    def make(self, source_class: str, target_class: str,
+             label: str) -> DotRelationship:
+        return self.value(source_class, target_class, label)

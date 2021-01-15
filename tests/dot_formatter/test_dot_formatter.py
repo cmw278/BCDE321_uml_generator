@@ -8,8 +8,6 @@ from test_data import TOYBOX_TOY, EXPECTED_OUTPUT
 class TestDotFormatter(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotFormatter
-        self.skipTest('Awaiting implementation of DotFormatter')
         self.test_data = TOYBOX_TOY
         self.expected_output = EXPECTED_OUTPUT
         self.formatter = DotFormatter(self.test_data)

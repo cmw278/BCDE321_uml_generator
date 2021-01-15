@@ -8,8 +8,6 @@ from test_data import DATA
 class TestDotAssociation(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotAssociation
-        self.skipTest('Awaiting implementation of DotAssociation')
         source_class = DATA['relationship']['source_class']
         target_class = DATA['relationship']['target_class']
         self.test_data = {

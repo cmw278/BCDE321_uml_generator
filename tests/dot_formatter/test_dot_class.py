@@ -9,8 +9,6 @@ from test_data import DATA
 class TestDotClass(TestCase):
 
     def setUp(self):
-        # TODO: Implement DotClass
-        self.skipTest('Awaiting implementation of DotClass')
         class_name = DATA['class_name']
         method = DATA['method']
         attribute = DATA['attribute']
