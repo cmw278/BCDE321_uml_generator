@@ -1,6 +1,9 @@
 # Documentation and existing libraries to be ignored #
 ######################################################
 Documentation/
+htmlcov/
+
+.coverage
 
 # Generated Files #
 #######################

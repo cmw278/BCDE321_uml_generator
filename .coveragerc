@@ -1,5 +1,3 @@
 [run]
 source =
     dot_formatter
-    js_analyzer
-    uml_arg_parser
