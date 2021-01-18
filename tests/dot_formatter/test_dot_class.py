@@ -1,6 +1,6 @@
 from unittest import TestCase
 from dot_formatter import (DotClass, DotObject, DotAttribute,
-                           DotMethod, DotAssociation, UMLRelationship)
+                           DotMethod)
 
 # Test data dictionary
 from test_data import DATA

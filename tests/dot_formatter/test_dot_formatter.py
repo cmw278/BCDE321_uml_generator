@@ -1,6 +1,6 @@
 from unittest import TestCase
-from dot_formatter import (DotFormatter, UMLRelationship, DotClass,
-                           DotAssociation)
+from dot_formatter import (DotFormatter, UMLRelationship,
+                           DotRelationship, DotClass)
 
 # Test data dictionary
 from test_data import TOYBOX_TOY, EXPECTED_OUTPUT
@@ -71,7 +71,7 @@ class TestDotFormatter(TestCase):
         self.assertEqual(expected, actual)
 
     def test_default_relationship(self):
-        expected_class = DotAssociation
+        expected_class = DotRelationship
         actual_instance = self.formatter._get_relationship({
             'source_class': 'source',
             'target_class': 'target'

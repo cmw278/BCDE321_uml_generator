@@ -33,11 +33,6 @@ class TestDotAssociation(TestCase):
         actual = self.relationship.target_class
         self.assertEqual(actual, expected)
 
-    def test_relationship_options(self):
-        expected = self.test_data['options']
-        actual = self.relationship.options
-        self.assertEqual(actual, expected)
-
     def test_to_string(self):
         expected = ('%s -> %s [\nlabel=""\n]'
                     % (
