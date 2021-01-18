@@ -23,16 +23,6 @@ class TestDotAssociation(TestCase):
             ''
         )
 
-    def test_attribute_source_class(self):
-        expected = self.test_data['source_class']
-        actual = self.relationship.source_class
-        self.assertEqual(actual, expected)
-
-    def test_relationship_target_class(self):
-        expected = self.test_data['target_class']
-        actual = self.relationship.target_class
-        self.assertEqual(actual, expected)
-
     def test_to_string(self):
         expected = ('%s -> %s [\nlabel=""\n]'
                     % (
