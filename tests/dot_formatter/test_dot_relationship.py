@@ -11,7 +11,9 @@ class TestDotRelationship(TestCase):
     )
     def setUp(self):
         self.relationship = DotRelationship('source', 'target')
+        self.relationship.options = dict()
 
     def test_str(self):
-        actual = self.relationship._set_options('label')
-        self.assertIsNone(actual)
+        expected = 'target -> source [\n\n]'
+        actual = str(self.relationship)
+        self.assertEqual(expected, actual)

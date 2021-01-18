@@ -1,5 +1,5 @@
 from unittest import TestCase
-from dot_formatter import DotAggregation
+from dot_formatter import UMLRelationship
 from test_dot_inheritance import TestDotInheritance
 
 # Test data dictionary
@@ -20,7 +20,7 @@ class TestDotAggregation(TestDotInheritance):
             'source_class': target_class,
             'target_class': source_class,
         }
-        self.relationship = DotAggregation(
+        self.relationship = UMLRelationship.AGGREGATION.make(
             source_class,
             target_class,
             label

@@ -1,5 +1,5 @@
 from unittest import TestCase
-from dot_formatter import DotInheritance
+from dot_formatter import UMLRelationship
 from test_dot_association import TestDotAssociation
 
 # Test data dictionary
@@ -19,9 +19,10 @@ class TestDotInheritance(TestDotAssociation):
             'source_class': source_class,
             'target_class': target_class
         }
-        self.relationship = DotInheritance(
+        self.relationship = UMLRelationship.INHERITANCE.make(
             source_class,
-            target_class
+            target_class,
+            ''
         )
 
     def test_to_string(self):

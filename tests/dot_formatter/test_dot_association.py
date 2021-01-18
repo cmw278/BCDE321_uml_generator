@@ -1,5 +1,5 @@
 from unittest import TestCase
-from dot_formatter import DotAssociation
+from dot_formatter import UMLRelationship
 
 # Test data dictionary
 from test_data import DATA
@@ -17,9 +17,10 @@ class TestDotAssociation(TestCase):
             'source_class': source_class,
             'target_class': target_class
         }
-        self.relationship = DotAssociation(
+        self.relationship = UMLRelationship.ASSOCIATION.make(
             source_class,
-            target_class
+            target_class,
+            ''
         )
 
     def test_attribute_source_class(self):
