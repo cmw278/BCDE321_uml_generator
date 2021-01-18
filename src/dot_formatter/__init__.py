@@ -2,11 +2,12 @@ from .dot_object import DotObject
 from .dot_argument import DotArgument
 from .dot_attribute import DotAttribute
 from .dot_method import DotMethod
+from .relationship_strategy import RelationshipStrategy
 from .dot_relationship import DotRelationship
-from .dot_association import DotAssociation
-from .dot_inheritance import DotInheritance
-from .dot_aggregation import DotAggregation
-from .dot_composition import DotComposition
+from .association_strategy import AssociationStrategy
+from .inheritance_strategy import InheritanceStrategy
+from .aggregation_strategy import AggregationStrategy
+from .composition_strategy import CompositionStrategy
 from .uml_relationship import UMLRelationship
 from .dot_class import DotClass
 from .dot_formatter import DotFormatter

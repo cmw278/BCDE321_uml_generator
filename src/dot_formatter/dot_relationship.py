@@ -1,5 +1,4 @@
-from abc import abstractmethod
-from dot_formatter import DotObject
+from dot_formatter import DotObject, RelationshipStrategy
 
 
 class DotRelationship(DotObject):
@@ -7,17 +6,21 @@ class DotRelationship(DotObject):
     def __init__(self, source_class: str, target_class: str, label: str = ''):
         self.source_class = source_class
         self.target_class = target_class
-        self._set_options(label)
+        self.label = label
+        self.strategy = None
 
-    @abstractmethod
-    def _set_options(self, label: str) -> None:
-        pass
+    def assign_strategy(self, strategy: RelationshipStrategy) -> None:
+        self.strategy = strategy
 
     def __str__(self) -> str:
-        return ('%s -> %s' % (self.target_class, self.source_class)
-                + self._get_options())
-
-    def _get_options(self) -> str:
-        return ' [\n%s\n]' % '\n'.join(
-            ['%s="%s"' % (key, value) for key, value in self.options.items()]
-        )
+        if self.strategy is not None:
+            return self.strategy.compose_string(
+                self.source_class,
+                self.target_class,
+                self.label
+            )
+        else:
+            return '%s -> %s [\n\n]' % (
+                self.target_class,
+                self.source_class
+            )

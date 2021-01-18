@@ -1,6 +1,9 @@
 from enum import Enum
-from dot_formatter import (DotAssociation, DotInheritance, DotAggregation,
-                           DotRelationship, DotComposition)
+from dot_formatter import (DotRelationship,
+                           AssociationStrategy as Association,
+                           InheritanceStrategy as Inheritance,
+                           AggregationStrategy as Aggregation,
+                           CompositionStrategy as Composition)
 
 
 class UMLRelationship(Enum):
@@ -11,11 +14,13 @@ class UMLRelationship(Enum):
     UMLRelationship.make() with the required arguments.
     """
 
-    ASSOCIATION = DotAssociation
-    INHERITANCE = DotInheritance
-    AGGREGATION = DotAggregation
-    COMPOSITION = DotComposition
+    ASSOCIATION = Association
+    INHERITANCE = Inheritance
+    AGGREGATION = Aggregation
+    COMPOSITION = Composition
 
     def make(self, source_class: str, target_class: str,
              label: str) -> DotRelationship:
-        return self.value(source_class, target_class, label)
+        relationship = DotRelationship(source_class, target_class, label)
+        relationship.assign_strategy(self.value())
+        return relationship
