@@ -22,5 +22,5 @@ class UMLRelationship(Enum):
     def make(self, source_class: str, target_class: str,
              label: str) -> DotRelationship:
         relationship = DotRelationship(source_class, target_class, label)
-        relationship.assign_strategy(self.value())
+        relationship.assign_strategy(self.value)
         return relationship

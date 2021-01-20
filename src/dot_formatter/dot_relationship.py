@@ -1,4 +1,4 @@
-from dot_formatter import DotObject, RelationshipStrategy
+from dot_formatter import DotObject, AssociationStrategy
 
 
 class DotRelationship(DotObject):
@@ -9,7 +9,7 @@ class DotRelationship(DotObject):
         self.label = label
         self.strategy = None
 
-    def assign_strategy(self, strategy: RelationshipStrategy) -> None:
+    def assign_strategy(self, strategy: AssociationStrategy) -> None:
         self.strategy = strategy
 
     def __str__(self) -> str:
