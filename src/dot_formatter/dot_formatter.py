@@ -1,4 +1,4 @@
-from dot_formatter import (DotClass, DotAttribute, DotMethod, DotArgument,
+from dot_formatter import (ClassBuilder, ClassDirector,
                            UMLRelationship, DotRelationship)
 from pkg_resources import resource_filename
 import gc
@@ -39,22 +39,6 @@ class DotFormatter:
             yield 'classes', self._set_classes
             yield 'relationships', self._set_relationships
             yield 'template', self._set_template_file_path
-        if component is DotClass:
-            # keys and setter methods for DotClass parameters
-            yield 'attributes', self._populate_class_attributes
-            yield 'methods', self._populate_class_methods
-        if component is DotAttribute:
-            # keys for DotAttributes parameters
-            yield 'name', None
-            yield 'type', None
-        if component is DotMethod:
-            # keys for DotMethod parameters
-            yield 'name', None
-            yield 'return_type', None
-            yield 'arguments', None
-        if component is DotArgument:
-            yield 'name', None
-            yield 'type', None
         if component is DotRelationship:
             # keys for DotRelationship parameters
             yield 'source_class', None
@@ -66,48 +50,11 @@ class DotFormatter:
         self.name = name
 
     def _set_classes(self, classes: list) -> None:
-        self.all_my_classes = [self._get_class(class_dict)
-                               for class_dict in classes]
-
-    def _get_class(self, class_dict: dict) -> DotClass:
-        new_class = DotClass(class_dict['name'])
-        for key, setter in self._get_key_setter(DotClass):
-            if key in class_dict:
-                setter(new_class, class_dict[key])
-        return new_class
-
-    def _populate_class_attributes(
-            self,
-            class_: DotClass,
-            attributes: list) -> None:
-        name, type_ = (
-            key for key, setter in self._get_key_setter(DotAttribute))
-        [class_.add_attribute(attribute[name], attribute[type_])
-         if type_ in attribute
-         else class_.add_attribute(attribute[name])
-         for attribute in attributes]
-
-    def _populate_class_methods(self, class_: DotClass, methods: list) -> None:
-        name, return_type, arguments = (
-            key for key, setter in self._get_key_setter(DotMethod))
-        for method in methods:
-            new_method = (class_.add_method(method[name], method[return_type])
-                          if return_type in method
-                          else class_.add_method(method[name]))
-            if arguments in method:
-                self._populate_method_arguments(new_method, method[arguments])
-
-    def _populate_method_arguments(
-            self,
-            method: DotMethod,
-            arguments: list) -> None:
-        name, type_ = (
-            key for key, setter in self._get_key_setter(DotArgument))
-        [
-            method.add_argument(
-                argument[name],
-                argument[type_]) if type_ in argument else method.add_argument(
-                argument[name]) for argument in arguments]
+        builder = ClassBuilder()
+        director = ClassDirector(builder)
+        for class_ in classes:
+            director.make_class(class_)
+            self.all_my_classes.append(builder.get_class())
 
     def _set_relationships(self, relationships: list) -> None:
         self.all_my_relationships = [self._get_relationship(relationship_dict)

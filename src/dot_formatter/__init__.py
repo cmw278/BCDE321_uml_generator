@@ -9,4 +9,6 @@ from .composition_strategy import CompositionStrategy
 from .dot_relationship import DotRelationship
 from .uml_relationship import UMLRelationship
 from .dot_class import DotClass
+from .class_builder import ClassBuilder
+from .class_director import ClassDirector
 from .dot_formatter import DotFormatter
